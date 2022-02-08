@@ -52,10 +52,18 @@
 - order_id
 - quantity
 
-##### Migration
+## LOGIC
+
+#### Migration
 
 - creating the required tables using db-migrate :
   - users table
   - products table
   - orders table
   - order_product table
+
+#### Models & Handlers
+
+- create model and hadler for :
+  - users, products and orders
+  - add order_products logic to the order model and handler
