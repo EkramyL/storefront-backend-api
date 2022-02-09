@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
 import { Order, OrderStore } from '../models/order';
-
+import authenticateToken from '../middleware/authenticateToken';
 const store = new OrderStore();
 
 const index = async (req: Request, res: Response) => {
@@ -54,7 +54,7 @@ const addProduct = async (req: Request, res: Response) => {
 
 const order_routes = (app: express.Application) => {
   app.get('/orders', index);
-  app.get('/orders/:id', show);
+  app.get('/orders/:id', authenticateToken, show);
   app.post('/orders', create);
   app.post('/orders/:id/products', addProduct);
 };

@@ -23,7 +23,6 @@ These are the notes from a meeting with the frontend developer that describe wha
 #### Orders
 
 - Current Order by user (args: user id)[token required] : '/orders/:id' [GET]
-- add products to order (args: quantity, order id, product id) [token required] : '/orders/:id/products' [POST]
 - [OPTIONAL] Completed Orders by user (args: user id)[token required]
 
 ## Data Shapes

@@ -2,12 +2,13 @@ import express, { Request, Response } from 'express';
 import { User, UserStore } from '../models/user';
 import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
+import authenticateToken from '../middleware/authenticateToken';
 
 dotenv.config();
 const tokenSecret = process.env.TOKEN_SECRET;
 const store = new UserStore();
 
-const index = async (_req: Request, res: Response) => {
+const index = async (req: Request, res: Response) => {
   try {
     const users = await store.index();
     res.json(users);
@@ -46,8 +47,8 @@ const create = async (req: Request, res: Response) => {
 };
 
 const user_routes = (app: express.Application) => {
-  app.get('/users', index);
-  app.get('/users/:id', show);
-  app.post('/users', create);
+  app.get('/users', authenticateToken, index);
+  app.get('/users/:id', authenticateToken, show);
+  app.post('/users', authenticateToken, create);
 };
 export default user_routes;
