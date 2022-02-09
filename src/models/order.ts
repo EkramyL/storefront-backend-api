@@ -1,8 +1,13 @@
 import client from '../database';
 
+enum Status {
+  'active' = 'active',
+  'completed' = 'completed',
+}
+
 export type Order = {
   id?: number;
-  status: string;
+  status: Status;
   user_id: number;
 };
 
@@ -27,7 +32,9 @@ export class OrderStore {
       conn.release();
       return result.rows[0];
     } catch (error) {
-      throw new Error(`unable to get orders . Error: ${error}`);
+      throw new Error(
+        `unable to get order with the id:${id} . Error: ${error}`
+      );
     }
   }
 
@@ -39,7 +46,7 @@ export class OrderStore {
       conn.release();
       return result.rows[0];
     } catch (error) {
-      throw new Error(`unable to get orders . Error: ${error}`);
+      throw new Error(`unable to create order . Error: ${error}`);
     }
   }
 
