@@ -38,9 +38,24 @@ const create = async (req: Request, res: Response) => {
   }
 };
 
+const addProduct = async (req: Request, res: Response) => {
+  try {
+    const quantity = parseInt(req.body.quantity);
+    const order_id = parseInt(req.body.order_id);
+    const product_id = parseInt(req.body.product_id);
+
+    const productAdded = await store.addProduct(quantity, order_id, product_id);
+    res.json(productAdded);
+  } catch (error) {
+    res.status(400);
+    res.json(error);
+  }
+};
+
 const order_routes = (app: express.Application) => {
   app.get('/orders', index);
   app.get('/orders/:id', show);
   app.post('/orders', create);
+  app.post('/orders/:id/products', addProduct);
 };
 export default order_routes;
