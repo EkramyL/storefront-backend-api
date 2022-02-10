@@ -8,7 +8,13 @@ enum Status {
 export type Order = {
   id?: number;
   status: Status;
-  user_id: number;
+  user_id: string;
+};
+export type OrderProduct = {
+  id?: number;
+  quantity: number;
+  product_id: string;
+  order_id: string;
 };
 
 export class OrderStore {
@@ -53,9 +59,9 @@ export class OrderStore {
 
   async addProduct(
     quantity: number,
-    order_id: number,
-    product_id: number
-  ): Promise<Order> {
+    order_id: string,
+    product_id: string
+  ): Promise<OrderProduct> {
     try {
       const conn = await client.connect();
       const sql =

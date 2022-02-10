@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import { Order, OrderStore } from '../models/order';
+import { Order, OrderStore, OrderProduct } from '../models/order';
 import authenticateToken from '../middleware/authenticateToken';
 const store = new OrderStore();
 
@@ -28,7 +28,7 @@ const create = async (req: Request, res: Response) => {
   try {
     const order: Order = {
       status: req.body.status,
-      user_id: parseInt(req.body.user_id),
+      user_id: req.body.user_id,
     };
     const newOrder = await store.create(order);
     res.json(newOrder);
@@ -41,8 +41,8 @@ const create = async (req: Request, res: Response) => {
 const addProduct = async (req: Request, res: Response) => {
   try {
     const quantity = parseInt(req.body.quantity);
-    const order_id = parseInt(req.params.id);
-    const product_id = parseInt(req.body.product_id);
+    const order_id = req.params.id;
+    const product_id = req.body.product_id;
 
     const productAdded = await store.addProduct(quantity, order_id, product_id);
     res.json(productAdded);
