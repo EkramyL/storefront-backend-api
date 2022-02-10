@@ -8,9 +8,9 @@
     "watch": "tsc-watch --esModuleInterop src/server.ts --outDir ./dist --onSuccess 'node ./dist/server.js'",
     "migrate": "db-migrate --env test up && db-migrate up ",
     "test": "db-migrate --env test up && set ENV=test --env test && jasmine-ts && db-migrate --env test down",
-    "testdown": "db-migrate --env test down",
+    "testdown": "db-migrate --env test reset",
     "testup": "set ENV=test db-migrate --env test up",
-    "jasmine": "jasmine-ts src/models/tests/book_spec.ts",
+    "jasmine": "jasmine-ts src/models/tests/products_spec.ts",
     "tsc": "tsc"
   },
   "author": "Ekramy Latief",

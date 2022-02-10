@@ -32,9 +32,9 @@ const show = async (req: Request, res: Response) => {
 const create = async (req: Request, res: Response) => {
   try {
     const user: User = {
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      userName: req.body.userName,
+      firstname: req.body.firstName,
+      lastname: req.body.lastName,
+      username: req.body.userName,
       password: req.body.password,
     };
     const newUser = await store.create(user);
