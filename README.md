@@ -50,6 +50,24 @@
 
 ## LOGIC
 
+#### Setting the databases
+
+- set two databases one for developement and the second for testing using postgres cli
+- using the same way set a username and give it the previlage to act on these databases.
+- the name of the databases and user and the password will be saved later in the .env file.
+
+#### Setting the ENV
+
+-install the dotenv librariry
+- set a file with .env name where we put our enviromental varaiables
+  ( variable we don't won't to share)
+- we define two env collection of variables
+  - ENV=dev where we spend most our time in development.it contain our dev database variables
+    ( postgres databas name "POSTGRES_DB", postgres host "POSTGRES_HOST", username "POSTGRES_USER", user password POSTGRES_PASSWORDORD)  
+  - ENV=test where the testing happens which contain a different database name "POSTGRES_TEST_DB".
+- the .env file will contain also a password for Bcrypt "BCRYPT_PASSWORD" salt rounds "SALT_ROUNDS"
+  which is used for hashing passwords.
+
 #### Migration
 
 - creating the required tables using db-migrate :
