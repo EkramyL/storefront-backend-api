@@ -32,13 +32,13 @@ These are the notes from a meeting with the frontend developer that describe wha
 - id
 - name
 - price
-- [OPTIONAL] category
 
 #### User
 
 - id
 - firstName
 - lastName
+- userName
 - password
 
 #### Orders
@@ -53,3 +53,34 @@ These are the notes from a meeting with the frontend developer that describe wha
 - product_id
 - order_id
 - quantity
+
+## Database
+
+#### Database schema
+
+- Users Table : (CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  firstname VARCHAR(100),
+  lastname VARCHAR(100),
+  username VARCHAR(100),
+  password_digest VARCHAR
+  );)
+
+- Products Table : (CREATE TABLE products (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(64) NOT NULL,
+  price integer NOT NULL
+  );)
+
+- Orders Table : (CREATE TABLE orders (
+  id SERIAL PRIMARY KEY,
+  status VARCHAR(15),
+  user_id bigint REFERENCES users(id)
+  );)
+
+- OrderProducts Table : (CREATE TABLE order_products (
+  id SERIAL PRIMARY KEY,
+  quantity integer,
+  order_id bigint REFERENCES orders(id),
+  product_id bigint REFERENCES products(id)
+  );)

@@ -7,8 +7,6 @@
 - Index : '/products' [GET]
 - Show : '/products/:id' [GET]
 - Create [token required] : '/products' [POST]
-- [OPTIONAL] Top 5 most popular products
-- [OPTIONAL] Products by category (args: product category)
 
 #### Users
 
@@ -20,7 +18,6 @@
 
 - Current Order by user (args: user id)[token required] : '/orders/:id' [GET]
 - add products to order (args: quantity, order id, product id) [token required] : '/orders/:id/products' [POST]
-- [OPTIONAL] Completed Orders by user (args: user id)[token required]
 
 ## Data Shapes
 
@@ -29,7 +26,6 @@
 - id
 - name
 - price
-- [OPTIONAL] category
 
 #### User
 
@@ -66,4 +62,16 @@
 
 - create model and hadler for :
   - users, products and orders
-  - add order_products logic to the order model and handler
+  - add order_products logic to the order model and handler.
+
+#### Middleware
+
+- create a middleware function to handle authentication of token.
+- implement the middleware in the endpoint in which authentication is required.
+
+#### Testing
+
+- using jasmine make a file for testing for each model
+- in order to run the test files in my order where i needed the user test to run
+  first to ensure there is an effictive user id when i run the order test i put a
+  number before each file name to ensure the arrangement (sorry if it was a bad practice)
