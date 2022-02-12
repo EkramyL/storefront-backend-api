@@ -55,7 +55,7 @@ describe('it describe the user model', () => {
   });
 
   it('show a user with id=1', async () => {
-    const result = await store.show(1);
+    const result = await store.show('1');
     expect(result.id).toEqual(newUser.id);
     expect(result.firstname).toEqual(newUser.firstname);
     expect(result.lastname).toEqual(newUser.lastname);

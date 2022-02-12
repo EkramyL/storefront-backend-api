@@ -39,7 +39,7 @@ const show = async (req: Request, res: Response) => {
     return;
   }
   try {
-    const id = parseInt(req.params.id);
+    const id = req.params.id;
     const user = await store.show(id);
     res.json(user);
   } catch (error) {
@@ -66,8 +66,8 @@ const create = async (req: Request, res: Response) => {
 };
 
 const user_routes = (app: express.Application) => {
-  app.get('/users', authenticateToken, index);
-  app.get('/users/:id', authenticateToken, show);
+  app.get('/users', index);
+  app.get('/users/:id', show);
   app.post('/users', create);
 };
 export default user_routes;
