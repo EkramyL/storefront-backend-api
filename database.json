@@ -3,7 +3,7 @@
     "driver": "pg",
     "host": { "ENV": "POSTGRESS_HOST" },
     "database": { "ENV": "POSTGRESS_DB" },
-    "user": { "ENV": "POSTGRESS_USER" },
+    "user": { "ENV": "POSTGRES_USER" },
     "password": { "ENV": "POSTGRESS_PASSWORD" }
   },
 
@@ -11,7 +11,7 @@
     "driver": "pg",
     "host": { "ENV": "POSTGRESS_HOST" },
     "database": { "ENV": "POSTGRES_TEST_DB" },
-    "user": { "ENV": "POSTGRESS_USER" },
-    "password": { "ENV": "POSTGRESS_PASSWORD" }
+    "user": { "ENV": "POSTGRES_USER" },
+    "password": { "ENV": "POSTGRES_PASSWORD" }
   }
 }
