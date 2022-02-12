@@ -10,6 +10,16 @@ const store = new UserStore();
 
 const index = async (req: Request, res: Response) => {
   try {
+    const authorizationHeader = req.headers.authorization as string;
+    const token = authorizationHeader.split(' ')[1];
+    jwt.verify(token, process.env.TOKEN_SECRET as string);
+  } catch (err) {
+    res.status(401);
+    res.json('Access denied, invalid token');
+    return;
+  }
+
+  try {
     const users = await store.index();
     res.json(users);
   } catch (error) {
@@ -19,6 +29,15 @@ const index = async (req: Request, res: Response) => {
 };
 
 const show = async (req: Request, res: Response) => {
+  try {
+    const authorizationHeader = req.headers.authorization as string;
+    const token = authorizationHeader.split(' ')[1];
+    jwt.verify(token, process.env.TOKEN_SECRET as string);
+  } catch (err) {
+    res.status(401);
+    res.json('Access denied, invalid token');
+    return;
+  }
   try {
     const id = parseInt(req.params.id);
     const user = await store.show(id);
@@ -30,13 +49,13 @@ const show = async (req: Request, res: Response) => {
 };
 
 const create = async (req: Request, res: Response) => {
+  const user: User = {
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
+    username: req.body.username,
+    password: req.body.password,
+  };
   try {
-    const user: User = {
-      firstname: req.body.firstName,
-      lastname: req.body.lastName,
-      username: req.body.userName,
-      password: req.body.password,
-    };
     const newUser = await store.create(user);
     let token = jwt.sign({ user: newUser }, tokenSecret as string);
     res.json(token);
@@ -49,6 +68,6 @@ const create = async (req: Request, res: Response) => {
 const user_routes = (app: express.Application) => {
   app.get('/users', authenticateToken, index);
   app.get('/users/:id', authenticateToken, show);
-  app.post('/users', authenticateToken, create);
+  app.post('/users', create);
 };
 export default user_routes;

@@ -21,6 +21,7 @@ if (ENV === 'dev') {
     database: POSTGRES_DB,
     user: POSTGRES_USER,
     password: POSTGRES_PASSWORD,
+    port: 5432,
   });
 } else {
   client = new Pool({
@@ -28,6 +29,7 @@ if (ENV === 'dev') {
     database: POSTGRES_TEST_DB,
     user: POSTGRES_USER,
     password: POSTGRES_PASSWORD,
+    port: 5432,
   });
 }
 // }
