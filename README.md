@@ -65,10 +65,12 @@
   ( variable we don't won't to share)
 - we define two env collection of variables
   - ENV=dev where we spend most our time in development.it contain our dev database variables
-    ( postgres databas name "POSTGRES_DB", postgres host "POSTGRES_HOST", username "POSTGRES_USER", user password POSTGRES_PASSWORDORD)
+    ( postgres databas name "POSTGRES_DB", postgres host "POSTGRES_HOST", username "POSTGRES_USER", user password POSTGRES_PASSWORD)
+
   - ENV=test where the testing happens which contain a different database name "POSTGRES_TEST_DB".
 - the .env file will contain also a password for Bcrypt "BCRYPT_PASSWORD" salt rounds "SALT_ROUNDS"
-  which is used for hashing passwords.
+  which is used for hashing passwords and also TOKEN_SECRET where we save the secret word for Token
+
 
 #### Migration
 

@@ -28,8 +28,7 @@ describe('Test show user with id=1 endpoint  ', () => {
       username: 'Ekramyl',
       password: 'password',
     };
-    // const store = new UserStore()
-    // const tok = store.create(user)
+
     const tok = await request.post('/users').send(user);
     const res = await request
       .get('/users/1')
@@ -61,7 +60,7 @@ describe('Test create products ', () => {
       name: 'product1',
       price: 10,
     };
-    const res = await request.post('/users').send(product);
+    const res = await request.post('/products').send(product);
     expect(res.status).toBe(200);
   });
 });
