@@ -101,3 +101,5 @@
 - in order to run the test files in my order where i needed the user test to run
   first to ensure there is an effictive user id when i run the order test i put a
   number before each file name to ensure the arrangement (sorry if it was a bad practice)
+- There are 4 files for testing 3 of which are named after each model    (1user_spec.ts, 2product_spec.ts,3order_spec.ts) and the last one which only test the endpoints is called "index_spec.ts" in the tests folder inside the models folder.
+-index_spec.ts tests 6 endpoints 3 of the user model (1. create user, 2. index all users, 3. show a user with specific id) 2 of the product model (1. create a product, 2. index all products) 1 of the order model(get the order of a specific user using its user id)

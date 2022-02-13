@@ -63,7 +63,7 @@ describe('The product model end points ', () => {
   });
 });
 describe('The order model end points ', () => {
-  it('gets the orders made by user with id=1 endpoint', async () => {
+  it('get the order of a specific user using its user id', async () => {
     const tok = await request.post('/users').send(user);
     const res = await request
       .get('/orders/1')
