@@ -71,7 +71,10 @@
   - ENV=test where the testing happens which contain a different database name "POSTGRES_TEST_DB".
 
 - the .env file will contain also a password for Bcrypt "BCRYPT_PASSWORD" salt rounds "SALT_ROUNDS"
-  which is used for hashing passwords and also "TOKEN_SECRET" where we save the secret word for Token
+  which is used for hashing passwords and also "TOKEN_SECRET" where we save the secret word for Token.
+
+- SO the total variables in .env :
+  {POSTGRES_HOST, POSTGRES_DB, POSTGRES_TEST_DB, POSTGRES_USER, POSTGRES_PASSWORD, ENV, BCRYPT_PASSWORD, SALT_ROUNDS, TOKEN_SECRET}
 
 #### Migration
 
