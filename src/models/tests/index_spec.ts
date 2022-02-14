@@ -154,6 +154,7 @@ describe('testing Endpoints', () => {
       expect(res.status).toBe(200);
     });
   });
+<<<<<<< HEAD
 
   describe('The order model end points ', () => {
     it('1. gets the create order', async () => {
@@ -179,5 +180,26 @@ describe('testing Endpoints', () => {
 
       expect(res.status).toBe(200);
     });
+||||||| 9b30957
+});
+describe('The order model end points ', () => {
+  it('gets the orders made by user with id=1 endpoint', async () => {
+    const tok = await request.post('/users').send(user);
+    const res = await request
+      .get('/orders/1')
+      .auth(tok.body, { type: 'bearer' });
+
+    expect(res.status).toBe(200);
+=======
+});
+describe('The order model end points ', () => {
+  it('get the order of a specific user using its user id', async () => {
+    const tok = await request.post('/users').send(user);
+    const res = await request
+      .get('/orders/1')
+      .auth(tok.body, { type: 'bearer' });
+
+    expect(res.status).toBe(200);
+>>>>>>> 50ebb14fd464708e00d46047fbcaadc62cbf64a6
   });
 });
